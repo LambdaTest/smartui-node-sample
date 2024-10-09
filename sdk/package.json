@@ -9,8 +9,8 @@
   "description": "",
   "main": "sdk.js",
   "scripts": {
-    "smartui-local": "smartui exec node sdkLocal.js",
-    "smartui-cloud": "smartui exec node sdkCloud.js"
+    "smartui-local": "npx smartui exec -- node sdkLocal.js",
+    "smartui-cloud": "npx smartui exec -- node sdkCloud.js"
   },
   "author": "",
   "license": "ISC"
