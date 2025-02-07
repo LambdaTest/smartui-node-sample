@@ -1,8 +1,13 @@
 name: Quality Checks
+
 on:
   pull_request:
     branches:
       - main
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Allows manual triggering
 
 env:
   LT_USERNAME: ${{ secrets.LT_USERNAME }}
@@ -10,9 +15,10 @@ env:
   GRID_HOST: ${{ secrets.GRID_HOST }}
 
 jobs:
-  SmartUI-Gihub-Action:
-    name: Execute SmartUI Test with Github App Integration
+  SmartUI-Github-Action:
+    name: Execute SmartUI Test with GitHub App Integration
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v1
 
@@ -27,7 +33,7 @@ jobs:
         GITHUB_URL=$API_HOST/repos/$GITHUB_REPOSITORY/statuses/$COMMIT_ID
         echo "GITHUB_URL: $GITHUB_URL"
         echo "GITHUB_URL=$GITHUB_URL" >> $GITHUB_ENV
-   
+
     - name: Install Dependencies
       run: npm install
 
