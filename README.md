@@ -1,10 +1,10 @@
 <h1>Smart UI Testing With Selenium Node.JS</h1>
 
-<img height="400" src="https://user-images.githubusercontent.com/126776938/232535511-8d51cf1b-1a33-48fc-825c-b13e7a9ec388.png">
+<img height="400" src="https://user-images.githubusercontent.com/126776938/232535511-8d51cf1b-1a33-48fc-825c-b13e7a9ec388.png"> 
 
 
 <p align="center">
-  <a href="https://www.lambdatest.com/blog/?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample" target="_bank">Blog</a>
+  <a href="https://www.lambdatest.com/blog/?utm_source=g ithub&utm_medium=repo&utm_campaign=playwright-sample" target="_bank">Blog</a>
   &nbsp; &#8901; &nbsp;
   <a href="https://www.lambdatest.com/support/docs/?utm_source=github&utm_medium=repo&utm_campaign=playwright-sample" target="_bank">Docs</a>
   &nbsp; &#8901; &nbsp;
