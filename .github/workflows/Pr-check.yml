@@ -1,0 +1,67 @@
+name: SmartUI PR Check with NodeJS SDK
+
+on:
+  pull_request:
+    branches:
+      - main
+      - stage
+
+env:
+  LT_USERNAME: ${{ secrets.LT_USERNAME }}
+  LT_ACCESS_KEY: ${{ secrets.LT_ACCESS_KEY }}
+  PROJECT_TOKEN: ${{ secrets.PROJECT_TOKEN }}
+  LT_SDK_DEBUG: true
+  SMARTUI_DEBUG: true
+
+jobs:
+  smartui-pr-check:
+    name: Execute SmartUI PR Check with NodeJS SDK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Find Last CommitId
+        run: |
+          API_HOST=https://api.github.com
+          # Get the commit ID of the last commit
+          COMMIT_ID=$(git rev-parse HEAD)
+          echo "Last commit ID of PR: $COMMIT_ID"
+          GITHUB_URL=$API_HOST/repos/$GITHUB_REPOSITORY/statuses/$COMMIT_ID
+          echo "GITHUB_URL: $GITHUB_URL"
+          echo "GITHUB_URL=$GITHUB_URL" >> $GITHUB_ENV
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20' # Use the appropriate Node.js version for your project
+
+      - name: Install SmartUI SDK
+        run: |
+          npm install @lambdatest/smartui-cli@latest
+          npm install @lambdatest/selenium-driver
+          npm install selenium-webdriver
+
+      - name: Set up SmartUI Config
+        run: |
+          npx smartui config:create smartui-config.json
+
+      - name: Execute SmartUI Tests
+        run: |
+          npx smartui --config smartui-config.json exec -- npm run smartui-cloud
+        env:
+          SMARTUI_PROJECT_NAME: "your-project-name" # Replace with your SmartUI project name
+          SMARTUI_BUILD_NAME: ${{ github.sha }}
+
+      - name: Check for Visual Changes
+        run: |
+          echo "Checking for visual differences..."
+
+      - name: Comment on PR with Results
+        if: failure()
+        run: |
+          echo "Visual differences found. Please review the SmartUI report."
+          # You can add code to post this comment to the PR using GitHub API
