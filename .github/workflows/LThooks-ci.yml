@@ -5,9 +5,9 @@ on:
       - main
 
 env:
-  LT_USERNAME: ${{ secrets.LT_USERNAME }}
-  LT_ACCESS_KEY: ${{ secrets.LT_ACCESS_KEY }}
-  GRID_HOST: ${{ secrets.GRID_HOST }}
+  LT_USERNAME: sanchits
+  LT_ACCESS_KEY: LT_7oXbVfsJOn6xlDfEkpADYtJFIkeUFkyPclOAKmntbKz8lem
+  GRID_HOST: hub.lambdatest.com
 
 jobs:
   SmartUI-Gihub-Action:
