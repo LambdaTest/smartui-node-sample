@@ -1,0 +1,36 @@
+name: Execute SmartUI Test with Github App Integration
+
+on: [push, pull_request]
+
+jobs:
+  smartui-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v1
+        with:
+          fetch-depth: 10
+
+      - name: Step for push event
+        if: github.event_name == 'push'
+        run: |
+          echo "This is a push event!"
+          echo "The latest commitId $(git log -1 --format='%H')"
+          echo "COMMIT_ID=$(git log -1 --format='%H')" >> $GITHUB_ENV
+
+      - name: Step for pull_request event
+        if: github.event_name == 'pull_request'
+        run: |
+          echo "This is a pull_request event!"
+          git log -n 5 --format="%H %an %s" | while read line; do echo "$line"; done
+          echo "The latest commitId $(git log -n 2 --format='%H' | tail -n 1)"
+          echo "COMMIT_ID=$(git log -n 2 --format='%H' | tail -n 1)" >> $GITHUB_ENV
+
+      - name: Create Github URL
+        run: |
+          API_HOST=https://api.github.com
+          echo "The latest commitId is $COMMIT_ID"
+          GITHUB_URL=$API_HOST/repos/$GITHUB_REPOSITORY/statuses/$COMMIT_ID
+          echo "GITHUB_URL: $GITHUB_URL"
+          echo "GITHUB_URL=$GITHUB_URL" >> $GITHUB_ENV
