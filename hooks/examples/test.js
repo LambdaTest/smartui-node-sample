@@ -35,7 +35,7 @@ async function searchTextOnGoogle() {
     "LT:Options": {
       "smartUI.project": "smartuigithub",
       // will generate random smartUI build if not specified
-      // "smartUI.build": "first", 
+      ...(process.env.BUILD_NAME && { "smartUI.build": process.env.BUILD_NAME }),
       "smartUI.options": {
         "output": {
           "errorColor": {
