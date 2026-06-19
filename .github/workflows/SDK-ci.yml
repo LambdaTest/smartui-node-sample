@@ -25,12 +25,12 @@ jobs:
 
       - name: Install Dependencies
         run: |
+          cd sdk
+          npm i
           npm i @lambdatest/smartui-cli
 
       - name: Execute NodeJS Wrapper
         run: |
           cd sdk
-          npm i
           npx smartui --version
-          npx smartui config:create smartui-web.json
-          npx smartui --config smartui-web.json exec -- npm run smartui-cloud
+          npm run smartui-cloud
