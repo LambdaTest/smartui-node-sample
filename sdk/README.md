@@ -37,7 +37,7 @@ git clone https://github.com/LambdaTest/smartui-node-sample
 Install required NPM modules for `LambdaTest Smart UI Selenium SDK` in your **Frontend** project.
 
 ```bash
-npm i @lambdatest/smartui-cli @lambdatest/selenium-driver selenium-webdriver
+npm i @lambdatest/smartui-cli@latest @lambdatest/selenium-driver selenium-webdriver
 ```
 
 <b>To ensure seamless execution of ES6 modules within our repository, it is essential to configure the Node.js environment to recognize ES6 module syntax. This is accomplished by specifying the module type in your `package.json` file.</b>

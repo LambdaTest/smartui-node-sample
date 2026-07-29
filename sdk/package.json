@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "@lambdatest/selenium-driver": "^1.0.2",
-    "@lambdatest/smartui-cli": "latest",
+    "@lambdatest/smartui-cli": "^4.1.77",
     "selenium-webdriver": "^4.16.0"
   },
   "name": "sdk",
