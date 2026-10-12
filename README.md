@@ -1,5 +1,7 @@
 # Run SmartUI Visual Tests with Selenium and Node.js on TestMu AI (Formerly LambdaTest)
 
+> Run visual End-to-End (E2E) testing with SmartUI and Selenium (Node.js) across real browsers on the TestMu AI cloud.
+
 <p align="center">
   <a href="https://www.testmuai.com/"><img src="https://img.shields.io/badge/MADE%20BY%20TestMu%20AI-000000.svg?style=for-the-badge&labelColor=000" alt="Made by TestMu AI"></a>
   <a href="https://www.npmjs.com/package/selenium-webdriver"><img src="https://img.shields.io/npm/v/selenium-webdriver.svg?style=for-the-badge&labelColor=000000" alt="selenium-webdriver version"></a>
